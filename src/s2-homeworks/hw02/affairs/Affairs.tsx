@@ -4,24 +4,24 @@ import {AffairType, FilterType} from '../HW2'
 import s from './Affairs.module.css'
 
 type AffairsPropsType = {
-    data: any // need to fix any
-    setFilter: any // asdasdsadasdVOVOOVOVO
-    deleteAffairCallback: any
+    data: Array<AffairType>
+    setFilter: (filter: FilterType) => void
+    deleteAffairCallback: (id: number) => void
     filter: FilterType
 }
 
-function Affairs(props: AffairsPropsType) {
+export const Affairs = (props: AffairsPropsType) => {
     const setAll = () => {
-        // need to fix
+        props.setFilter('all')
     }
     const setHigh = () => {
-        // need to fix
+        props.setFilter('high')
     }
     const setMiddle = () => {
-        // need to fix
+        props.setFilter('middle')
     }
     const setLow = () => {
-        // need to fix
+        props.setFilter('low')
     }
 
     const cnAll = s.button + ' ' + s.all + (props.filter === 'all' ? ' ' + s.active : '')
@@ -35,7 +35,9 @@ function Affairs(props: AffairsPropsType) {
             affair={a}
             deleteAffairCallback={props.deleteAffairCallback}
         />
+
     ))
+
 
     return (
         <div>
@@ -72,6 +74,5 @@ function Affairs(props: AffairsPropsType) {
             <div className={s.affairs}>{mappedAffairs}</div>
         </div>
     )
-}
 
-export default Affairs
+}
